@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjkxNTIsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgwMmVmNzkwRGQ3OTkzQTM1ZkQ4NDdDMDUzRURkQUU5NDBEMDU1NTk2In0",
+    "payload": "eyJkb21haW4iOiJtb29kbmV0LmFwcCJ9",
+    "signature": "MHgxMGQwZGU4ZGYwZDUwZTdmMGIxN2YxMTU2NDI1MjRmZTY0MTUyZGU4ZGU1MWU0MThiYjU4ZjVmZmQxYjRjNDBiNGVlZTRhNDcwNmVmNjhlMzQ0ZGQ5MDBkYmQyMmNlMmVlZGY5ZGQ0N2JlNWRmNzMwYzUxNjE4OWVjZDJjY2Y0MDFj"
+  },
+  "frame": {
+    "version": "1",
+    "name": "MoodNet",
+    "homeUrl": "https://moodnet.app",
+    "iconUrl": "https://moodnet.app/icon.png",
+    "splashImageUrl": "https://moodnet.app/splash.png",
+    "splashBackgroundColor": "#1a1b3a",
+    "webhookUrl": "https://moodnet.app/api/webhook",
+    "subtitle": "Anonymous Web3 conversations",
+    "description": "Anonymous, mood-driven conversations for Web3 insiders with tokenized revenue sharing.",
+    "screenshotUrls": [
+      "https://moodnet.app/screenshot1.png",
+      "https://moodnet.app/screenshot2.png",
+      "https://moodnet.app/screenshot3.png"
+    ],
+    "primaryCategory": "social",
+    "tags": ["web3", "social", "anonymous", "mood", "crypto"],
+    "heroImageUrl": "https://moodnet.app/hero.png",
+    "tagline": "Express your Web3 mood anonymously",
+    "ogTitle": "MoodNet - Anonymous Web3 Conversations",
+    "ogDescription": "Join anonymous, mood-driven conversations with Web3 insiders. Share insights, connect with builders, and earn through tokenized participation.",
+    "ogImageUrl": "https://moodnet.app/og.png"
+  }
+}
