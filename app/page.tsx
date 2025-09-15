@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useMiniKit } from '@coinbase/minikit'
+import { useOnchainKit } from '@coinbase/onchainkit'
 import { AppShell } from '@/components/AppShell'
 import { NavigationTabs } from '@/components/NavigationTabs'
 import { PostCard } from '@/components/PostCard'
@@ -13,7 +13,7 @@ import { generateMockData } from '@/lib/utils'
 import { Plus, Sparkles } from 'lucide-react'
 
 export default function HomePage() {
-  const { context } = useMiniKit()
+  const { address } = useOnchainKit()
   const [activeTab, setActiveTab] = useState('feed')
   const [currentMood, setCurrentMood] = useState<MoodType>('neutral')
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
@@ -27,7 +27,7 @@ export default function HomePage() {
   const handleCreatePost = async (content: string, mood: MoodType, isAnonymous: boolean) => {
     const newPost: Post = {
       postId: Date.now().toString(),
-      authorId: isAnonymous ? 'anon' : context?.user?.fid?.toString() || 'user',
+      authorId: isAnonymous ? 'anon' : address || 'user',
       content,
       moodTag: mood,
       timestamp: new Date(),
