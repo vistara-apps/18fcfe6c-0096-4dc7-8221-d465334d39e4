@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "MoodNet",
+    "subtitle": "Built with Zara",
+    "description": "MoodNet is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://18fcfe6c00964dc78221d465334d39e4-bix8.vercel.app",
+    "splashImageUrl": "https://18fcfe6c00964dc78221d465334d39e4-bix8.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://18fcfe6c00964dc78221d465334d39e4-bix8.vercel.app/image.png",
+    "tagline": "MoodNet",
+    "screenshotUrls": [
+      "https://18fcfe6c00964dc78221d465334d39e4-bix8.vercel.app/screenshot.png",
+      "https://18fcfe6c00964dc78221d465334d39e4-bix8.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://18fcfe6c00964dc78221d465334d39e4-bix8.vercel.app/api/webhook"
+  }
+}

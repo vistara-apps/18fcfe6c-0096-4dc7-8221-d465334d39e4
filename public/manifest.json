@@ -20,7 +20,13 @@
       "https://moodnet.app/screenshot3.png"
     ],
     "primaryCategory": "social",
-    "tags": ["web3", "social", "anonymous", "mood", "crypto"],
+    "tags": [
+      "web3",
+      "social",
+      "anonymous",
+      "mood",
+      "crypto"
+    ],
     "heroImageUrl": "https://moodnet.app/hero.png",
     "tagline": "Express your Web3 mood anonymously",
     "ogTitle": "MoodNet - Anonymous Web3 Conversations",
