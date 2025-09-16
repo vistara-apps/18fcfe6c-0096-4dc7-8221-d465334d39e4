@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useMiniKit } from '@coinbase/minikit'
 import { AppShell } from '@/components/AppShell'
 import { NavigationTabs } from '@/components/NavigationTabs'
 import { PostCard } from '@/components/PostCard'
@@ -13,7 +12,6 @@ import { generateMockData } from '@/lib/utils'
 import { Plus, Sparkles } from 'lucide-react'
 
 export default function HomePage() {
-  const { context } = useMiniKit()
   const [activeTab, setActiveTab] = useState('feed')
   const [currentMood, setCurrentMood] = useState<MoodType>('neutral')
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
@@ -27,7 +25,7 @@ export default function HomePage() {
   const handleCreatePost = async (content: string, mood: MoodType, isAnonymous: boolean) => {
     const newPost: Post = {
       postId: Date.now().toString(),
-      authorId: isAnonymous ? 'anon' : context?.user?.fid?.toString() || 'user',
+      authorId: isAnonymous ? 'anon' : 'user',
       content,
       moodTag: mood,
       timestamp: new Date(),
@@ -45,28 +43,59 @@ export default function HomePage() {
         return (
           <div className="space-y-6">
             {/* Welcome Header */}
-            <div className="text-center py-8">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Sparkles className="text-accent" size={24} />
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <div className="text-center py-12 animate-fade-in-up">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <Sparkles className="text-accent animate-float" size={28} />
+                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse-glow">
                   MoodNet
                 </h1>
-                <Sparkles className="text-accent" size={24} />
+                <Sparkles className="text-accent animate-float" size={28} style={{ animationDelay: '1s' }} />
               </div>
-              <p className="text-text-secondary max-w-md mx-auto">
+              <p className="text-text-secondary max-w-lg mx-auto text-lg leading-relaxed">
                 Anonymous, mood-driven conversations for Web3 insiders
               </p>
+              <div className="flex items-center justify-center gap-4 mt-6">
+                <div className="flex items-center gap-2 text-sm text-text-muted">
+                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                  <span>Live Community</span>
+                </div>
+                <div className="w-1 h-4 bg-text-muted/20" />
+                <div className="flex items-center gap-2 text-sm text-text-muted">
+                  <span>{posts.length} Active Posts</span>
+                </div>
+              </div>
             </div>
 
             {/* Posts Feed */}
-            <div className="space-y-4">
-              {posts.map((post) => (
-                <PostCard 
-                  key={post.postId} 
-                  post={post} 
-                  variant="anonymous"
-                />
+            <div className="space-y-6">
+              {posts.map((post, index) => (
+                <div 
+                  key={post.postId}
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <PostCard 
+                    post={post} 
+                    variant="anonymous"
+                  />
+                </div>
               ))}
+              
+              {posts.length === 0 && (
+                <div className="text-center py-16 animate-fade-in-up">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto mb-6">
+                    <span className="text-4xl">💭</span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">No posts yet</h3>
+                  <p className="text-text-secondary mb-6">Be the first to share your thoughts with the community!</p>
+                  <button
+                    onClick={() => setIsCreateModalOpen(true)}
+                    className="px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-xl hover:scale-105 transition-all duration-300"
+                  >
+                    Create First Post
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )
@@ -141,9 +170,10 @@ export default function HomePage() {
         {/* Floating Create Button */}
         <button
           onClick={() => setIsCreateModalOpen(true)}
-          className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-r from-primary to-accent text-white shadow-lg hover:scale-110 transition-all duration-300 flex items-center justify-center z-40"
+          className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-r from-primary to-accent text-white shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center z-40 group glow-effect-strong animate-float"
         >
-          <Plus size={24} />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent opacity-20 animate-pulse-glow" />
+          <Plus size={24} className="relative z-10 group-hover:rotate-90 transition-transform duration-300" />
         </button>
 
         {/* Create Post Modal */}
