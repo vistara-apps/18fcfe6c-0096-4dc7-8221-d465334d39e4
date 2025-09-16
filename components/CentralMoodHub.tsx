@@ -22,18 +22,20 @@ export function CentralMoodHub({ currentMood, onMoodChange, className }: Central
       {/* Central Hub */}
       <div className="relative">
         {/* Outer Ring */}
-        <div className="w-40 h-40 rounded-full border-2 border-primary/30 animate-pulse-glow" />
+        <div className="w-44 h-44 rounded-full border-2 border-primary/30 animate-pulse-glow shadow-2xl" />
         
         {/* Middle Ring */}
-        <div className="absolute inset-4 rounded-full border border-accent/40 animate-spin" 
-             style={{ animationDuration: '20s' }} />
+        <div className="absolute inset-4 rounded-full border border-accent/40 animate-spin shadow-lg" 
+             style={{ animationDuration: '25s' }} />
         
         {/* Inner Core */}
-        <div className="absolute inset-8 rounded-full glass-effect border border-white/20 flex items-center justify-center">
+        <div className="absolute inset-8 rounded-full glass-effect-elevated border border-white/20 flex items-center justify-center shadow-xl hover:scale-105 transition-all duration-500 cursor-pointer group">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 opacity-50 group-hover:opacity-70 transition-opacity duration-300" />
           <MoodIndicator 
             mood={currentMood} 
             variant="expressive" 
             size="lg"
+            className="relative z-10 group-hover:scale-110 transition-all duration-300"
           />
         </div>
       </div>
@@ -48,22 +50,27 @@ export function CentralMoodHub({ currentMood, onMoodChange, className }: Central
             key={mood}
             onClick={() => onMoodChange(mood)}
             className={cn(
-              'absolute w-12 h-12 rounded-full transition-all duration-300',
-              'glass-effect border hover:scale-110',
+              'absolute w-14 h-14 rounded-full transition-all duration-500',
+              'glass-effect-elevated border hover:scale-125 active:scale-110',
+              'shadow-lg hover:shadow-xl',
               isActive 
-                ? 'border-primary/50 bg-primary/20 scale-110' 
+                ? 'border-primary/50 bg-primary/20 scale-125 glow-effect' 
                 : 'border-white/20 hover:border-white/40',
-              'animate-orbit'
+              'animate-orbit group'
             )}
             style={{
-              transform: `rotate(${angle}deg) translateX(120px) rotate(-${angle}deg)`,
-              animationDelay: `${index * -3.33}s`
+              transform: `rotate(${angle}deg) translateX(130px) rotate(-${angle}deg)`,
+              animationDelay: `${index * -4}s`
             }}
           >
             <MoodIndicator 
               mood={mood} 
               variant={isActive ? 'expressive' : 'minimal'}
               size="sm"
+              className={cn(
+                'group-hover:scale-110 transition-all duration-300',
+                isActive && 'animate-bounce-subtle'
+              )}
             />
           </button>
         )
