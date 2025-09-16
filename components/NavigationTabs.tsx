@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { Home, Compass, User, Plus } from 'lucide-react'
+import { Home, Compass, User, Plus, CreditCard } from 'lucide-react'
 
 interface NavigationTabsProps {
   activeTab?: string
@@ -19,7 +19,7 @@ export function NavigationTabs({
   const tabs = [
     { id: 'feed', label: 'Feed', icon: Home },
     { id: 'discover', label: 'Discover', icon: Compass },
-    { id: 'create', label: 'Create', icon: Plus },
+    { id: 'payments', label: 'Payments', icon: CreditCard },
     { id: 'profile', label: 'Profile', icon: User },
   ]
 

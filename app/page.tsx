@@ -1,19 +1,18 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useMiniKit } from '@coinbase/minikit'
 import { AppShell } from '@/components/AppShell'
 import { NavigationTabs } from '@/components/NavigationTabs'
 import { PostCard } from '@/components/PostCard'
 import { ProfileHeader } from '@/components/ProfileHeader'
 import { CreatePostModal } from '@/components/CreatePostModal'
 import { CentralMoodHub } from '@/components/CentralMoodHub'
+import { PaymentTest } from '@/components/PaymentTest'
 import { MoodType, Post } from '@/lib/types'
 import { generateMockData } from '@/lib/utils'
 import { Plus, Sparkles } from 'lucide-react'
 
 export default function HomePage() {
-  const { context } = useMiniKit()
   const [activeTab, setActiveTab] = useState('feed')
   const [currentMood, setCurrentMood] = useState<MoodType>('neutral')
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
@@ -27,7 +26,7 @@ export default function HomePage() {
   const handleCreatePost = async (content: string, mood: MoodType, isAnonymous: boolean) => {
     const newPost: Post = {
       postId: Date.now().toString(),
-      authorId: isAnonymous ? 'anon' : context?.user?.fid?.toString() || 'user',
+      authorId: isAnonymous ? 'anon' : 'user',
       content,
       moodTag: mood,
       timestamp: new Date(),
@@ -116,6 +115,20 @@ export default function HomePage() {
                 )}
               </div>
             </div>
+          </div>
+        )
+
+      case 'payments':
+        return (
+          <div className="space-y-6">
+            <div className="text-center py-8">
+              <h2 className="text-2xl font-semibold mb-4">x402 Payment Flow</h2>
+              <p className="text-text-secondary">
+                Test the integrated payment system with wagmi and x402-axios
+              </p>
+            </div>
+            
+            <PaymentTest />
           </div>
         )
 
